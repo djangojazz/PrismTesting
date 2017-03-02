@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.Practices.Prism.UnityExtensions;
+using Microsoft.Practices.Unity;
 
 namespace Main
 {
@@ -12,7 +13,15 @@ namespace Main
   {
     protected override DependencyObject CreateShell()
     {
-      throw new NotImplementedException();
+      return Container.Resolve<Shell>();
+    }
+
+    protected override void InitializeShell()
+    {
+      base.InitializeShell();
+
+      App.Current.MainWindow = (Window)Shell;
+      App.Current.MainWindow.Show();
     }
   }
 }
