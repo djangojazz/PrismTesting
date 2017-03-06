@@ -5,7 +5,7 @@
         xmlns:inf="clr-namespace:Main.Infrastructure;assembly=Main.Infrastructure"
         Title="Shell">
   <DockPanel LastChildFill="True">
-    <ItemsControl DockPanel.Dock="Top" prism:RegionManager.RegionName="{x:Static inf:RegionNames.ToolbarRegion}" />
+    <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" prism:RegionManager.RegionName="{x:Static inf:RegionNames.ToolbarRegion}" />
     <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.ContentRegion}" />
   </DockPanel>
 </Window>
