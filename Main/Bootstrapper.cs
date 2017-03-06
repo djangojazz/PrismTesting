@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.UnityExtensions;
 using Microsoft.Practices.Unity;
+using ModuleA;
 
 namespace Main
 {
@@ -22,6 +24,13 @@ namespace Main
 
       App.Current.MainWindow = (Window)Shell;
       App.Current.MainWindow.Show();
+    }
+
+    protected override Microsoft.Practices.Prism.Modularity.IModuleCatalog CreateModuleCatalog()
+    {
+      ModuleCatalog catalog = new ModuleCatalog();
+      catalog.AddModule(typeof(ModuleAModule));
+      return catalog;
     }
   }
 }
