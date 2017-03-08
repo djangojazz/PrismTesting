@@ -29,18 +29,40 @@ namespace Main
       App.Current.MainWindow.Show();
     }
 
-    protected override Microsoft.Practices.Prism.Modularity.IModuleCatalog CreateModuleCatalog()
-    {
-      ModuleCatalog catalog = new ModuleCatalog();
-      catalog.AddModule(typeof(ModuleAModule));
-      return catalog;
-    }
+    
 
     protected override RegionAdapterMappings ConfigureRegionAdapterMappings()
     {
       RegionAdapterMappings mappings = base.ConfigureRegionAdapterMappings();
       mappings.RegisterMapping(typeof(StackPanel), Container.Resolve<StackPanelRegionAdapter>());
       return mappings;
+    }
+
+    ////Chapter Before method
+    //protected override IModuleCatalog CreateModuleCatalog()
+    //{
+    //  ModuleCatalog catalog = new ModuleCatalog();
+    //  catalog.AddModule(typeof(ModuleAModule));
+    //  return catalog;
+    //}
+
+    ////Code method of doing Prism
+    //protected override void ConfigureModuleCatalog()
+    //{
+    //  Type moduleAType = typeof(ModuleAModule);
+    //  ModuleCatalog.AddModule(new ModuleInfo()
+    //  {
+    //    ModuleName = moduleAType.Name,
+    //    ModuleType = moduleAType.AssemblyQualifiedName,
+    //    InitializationMode = InitializationMode.WhenAvailable
+    //  });
+    //}
+
+    //Directory method of doing Prism, you need to build the dll manually and create a directory called 'Modules' in the bin folder and then run that.
+    protected override IModuleCatalog CreateModuleCatalog()
+    {
+      return new DirectoryModuleCatalog() { ModulePath = @".\Modules" };
+
     }
   }
 }

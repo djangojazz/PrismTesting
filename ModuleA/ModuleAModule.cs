@@ -10,6 +10,8 @@ using Main.Infrastructure;
 
 namespace ModuleA
 {
+  //Setting OnDemand to true will delay automatic startup
+  [Module(ModuleName = "ModuleA", OnDemand =true)]
   public class ModuleAModule : IModule
   {
     IUnityContainer _container;
