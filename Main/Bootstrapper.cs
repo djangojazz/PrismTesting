@@ -11,30 +11,41 @@ using Microsoft.Practices.Prism.Regions;
 using Microsoft.Practices.Prism.UnityExtensions;
 using Microsoft.Practices.Unity;
 using ModuleA;
+using Microsoft.Practices.Prism.MefExtensions;
+using System.ComponentModel.Composition.Hosting;
 
 namespace Main
 {
   public class Bootstrapper : UnityBootstrapper
+  //MefBootstrapper 
+  //UnityBootstrapper Unity is the standard for the most part
   {
     protected override DependencyObject CreateShell()
     {
+      //Unity Way
       return Container.Resolve<Shell>();
+
+      ////MEF way
+      //return Container.GetExportedValue<Shell>();
     }
 
     protected override void InitializeShell()
     {
-      base.InitializeShell();
-
+      base.InitializeShell();                               
       App.Current.MainWindow = (Window)Shell;
       App.Current.MainWindow.Show();
     }
-
+    
     
 
     protected override RegionAdapterMappings ConfigureRegionAdapterMappings()
     {
       RegionAdapterMappings mappings = base.ConfigureRegionAdapterMappings();
+      //Unity way
       mappings.RegisterMapping(typeof(StackPanel), Container.Resolve<StackPanelRegionAdapter>());
+
+      ////Mef way
+      //mappings.RegisterMapping(typeof(StackPanel), Container.GetExportedValue<StackPanelRegionAdapter>());
       return mappings;
     }
 
@@ -46,23 +57,46 @@ namespace Main
     //  return catalog;
     //}
 
-    ////Code method of doing Prism
-    //protected override void ConfigureModuleCatalog()
+    ////1. Code method of doing Prism
+    protected override void ConfigureModuleCatalog()
+    {
+      Type moduleAType = typeof(ModuleAModule);
+      ModuleCatalog.AddModule(new ModuleInfo()
+      {
+        ModuleName = moduleAType.Name,
+        ModuleType = moduleAType.AssemblyQualifiedName,
+        InitializationMode = InitializationMode.WhenAvailable
+      });
+    }
+
+    ////2. Directory method of doing Prism, you need to build the dll manually and create a directory called 'Modules' in the bin folder and then run that.
+    //protected override IModuleCatalog CreateModuleCatalog()
     //{
-    //  Type moduleAType = typeof(ModuleAModule);
-    //  ModuleCatalog.AddModule(new ModuleInfo()
-    //  {
-    //    ModuleName = moduleAType.Name,
-    //    ModuleType = moduleAType.AssemblyQualifiedName,
-    //    InitializationMode = InitializationMode.WhenAvailable
-    //  });
+    //  return new DirectoryModuleCatalog() { ModulePath = @".\Modules" };
+
     //}
 
-    //Directory method of doing Prism, you need to build the dll manually and create a directory called 'Modules' in the bin folder and then run that.
-    protected override IModuleCatalog CreateModuleCatalog()
-    {
-      return new DirectoryModuleCatalog() { ModulePath = @".\Modules" };
+    ////3. Load from a xaml resource dictionary
+    //protected override IModuleCatalog CreateModuleCatalog()
+    //{
+    //  return Microsoft.Practices.Prism.Modularity.ModuleCatalog.CreateFromXaml(
+    //    new Uri("/Main;component/XamlCatalog.xaml", UriKind.Relative));
 
-    }
+    //}
+
+    //  //4. Load from config file
+    //protected override IModuleCatalog CreateModuleCatalog()
+    //{
+    //  return new ConfigurationModuleCatalog();
+    //}
+
+    ////5. Load from MEF method
+    //protected override void ConfigureAggregateCatalog()
+    //{
+    //  base.ConfigureAggregateCatalog();
+    //  AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(Bootstrapper).Assembly));
+    //  AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(StackPanelRegionAdapter).Assembly));
+    //  AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(ModuleAModule).Assembly));
+    //}
   }
 }

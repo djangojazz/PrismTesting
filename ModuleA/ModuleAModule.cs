@@ -7,11 +7,17 @@ using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Prism.Regions;
 using Main.Infrastructure;
+using Microsoft.Practices.Prism.MefExtensions.Modularity;
 
 namespace ModuleA
 {
-  //Setting OnDemand to true will delay automatic startup
-  [Module(ModuleName = "ModuleA", OnDemand =true)]
+  ////1. Code method of doing Prism: Setting OnDemand to true will delay automatic startup
+  //[Module(ModuleName = "ModuleA", OnDemand = true)]
+
+  ////5. MEF way of doing Prism, need the MEF extensions and System.ComponentModel.Composition
+  //[ModuleExport(typeof(ModuleAModule), InitializationMode=InitializationMode.WhenAvailable)]
+
+  [Module(ModuleName = "ModuleA", OnDemand = true)]
   public class ModuleAModule : IModule
   {
     IUnityContainer _container;
