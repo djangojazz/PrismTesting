@@ -32,7 +32,7 @@ namespace ModuleA
     public void Initialize()
     {
       _container.RegisterType<ToolbarA>();
-      _container.RegisterType<IContentAView, ContentA>();
+      _container.RegisterType<ContentA>();
       _container.RegisterType<IContentAViewModel, ContentAViewViewModel>();
 
       ////experiment with regions here

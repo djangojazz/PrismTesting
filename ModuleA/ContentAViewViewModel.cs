@@ -8,13 +8,9 @@ using Main.Infrastructure;
 namespace ModuleA
 {
   public class ContentAViewViewModel : IContentAViewModel
-  {
-    public IView View { get; set; }
-
-    public ContentAViewViewModel(IContentAView view)
-    {
-      View = view;
-      View.ViewModel = this;
+  {                                      
+    public ContentAViewViewModel()
+    {                         
     }
   }
 }
