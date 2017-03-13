@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace ModuleA
 {
   /// <summary>
-  /// Interaction logic for ToolbarView.xaml
+  /// Interaction logic for ToolbarA.xaml
   /// </summary>
-  public partial class ToolbarView : UserControl
+  public partial class ToolbarA : UserControl
   {
-    public ToolbarView()
+    public ToolbarA()
     {
       InitializeComponent();
     }

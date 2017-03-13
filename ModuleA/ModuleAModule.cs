@@ -17,7 +17,7 @@ namespace ModuleA
   ////5. MEF way of doing Prism, need the MEF extensions and System.ComponentModel.Composition
   //[ModuleExport(typeof(ModuleAModule), InitializationMode=InitializationMode.WhenAvailable)]
 
-  [Module(ModuleName = "ModuleA", OnDemand = true)]
+  //[Module(ModuleName = "ModuleA", OnDemand = true)]
   public class ModuleAModule : IModule
   {
     IUnityContainer _container;
@@ -31,16 +31,15 @@ namespace ModuleA
 
     public void Initialize()
     {
-      //experiment with regions here
-      IRegion region = _regionManager.Regions[RegionNames.ToolbarRegion];
+      _container.RegisterType<ToolbarA>();
+      _container.RegisterType<IContentAView, ContentA>();
+      _container.RegisterType<IContentAViewModel, ContentAViewViewModel>();
 
-      region.Add(_container.Resolve<ToolbarView>());
-      region.Add(_container.Resolve<ToolbarView>());
-      region.Add(_container.Resolve<ToolbarView>());
-      region.Add(_container.Resolve<ToolbarView>());
-      region.Add(_container.Resolve<ToolbarView>());
+      ////experiment with regions here
+      //IRegion region = _regionManager.Regions[RegionNames.ToolbarRegion];
+      
 
-      _regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(ContentView));
+      //_regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(ContentView));
     }
   }
 }
