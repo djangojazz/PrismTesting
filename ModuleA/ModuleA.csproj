@@ -62,11 +62,12 @@
     <Compile Include="ContentA.xaml.cs">
       <DependentUpon>ContentA.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ContentAViewViewModel.cs" />
+    <Compile Include="ContentAViewModel.cs" />
     <Compile Include="ContentView.xaml.cs">
       <DependentUpon>ContentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="IContentViewModel.cs" />
+    <Compile Include="IContentAView.cs" />
+    <Compile Include="IContentAViewModel.cs" />
     <Compile Include="ModuleAModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

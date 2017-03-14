@@ -32,14 +32,13 @@ namespace ModuleA
     public void Initialize()
     {
       _container.RegisterType<ToolbarA>();
-      _container.RegisterType<ContentA>();
-      _container.RegisterType<IContentAViewModel, ContentAViewViewModel>();
-
+      _container.RegisterType<IContentAView, ContentA>();
+      _container.RegisterType<IContentAViewModel, ContentAViewModel>();
+                                                     
       ////experiment with regions here
       //IRegion region = _regionManager.Regions[RegionNames.ToolbarRegion];
-      
-
-      //_regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(ContentView));
+                                                                             
+      _regionManager.RegisterViewWithRegion(RegionNames.ToolbarRegion, typeof(ToolbarA));
     }
   }
 }

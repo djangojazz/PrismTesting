@@ -19,17 +19,16 @@ namespace ModuleA
   /// <summary>
   /// Interaction logic for ContentA.xaml
   /// </summary>
-  public partial class ContentA : UserControl, IView
+  public partial class ContentA : UserControl, IContentAView
   {
-    public ContentA(IContentAViewModel viewModel)
+    public ContentA()
     {
-      InitializeComponent();
-      ViewModel = viewModel;
+      InitializeComponent();   
     }
 
     public IViewModel ViewModel
     {
-      get => (IViewModel)DataContext;
+      get => (IContentAViewModel)DataContext;
       set => DataContext = value;
     }
   }
