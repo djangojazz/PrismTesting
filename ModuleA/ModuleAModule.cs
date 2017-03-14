@@ -34,11 +34,19 @@ namespace ModuleA
       _container.RegisterType<ToolbarA>();
       _container.RegisterType<IContentAView, ContentA>();
       _container.RegisterType<IContentAViewModel, ContentAViewModel>();
-                                                     
-      ////experiment with regions here
-      //IRegion region = _regionManager.Regions[RegionNames.ToolbarRegion];
                                                                              
       _regionManager.RegisterViewWithRegion(RegionNames.ToolbarRegion, typeof(ToolbarA));
+
+      var vm = _container.Resolve<IContentAViewModel>();
+      vm.Message = "First View";
+      IRegion region = _regionManager.Regions[RegionNames.ContentRegion];
+      region.Add(vm.View);
+
+      var vm2 = _container.Resolve<IContentAViewModel>();
+      vm2.Message = "Second View";
+
+      region.Deactivate(vm.View);
+      region.Add(vm2.View);
     }
   }
 }

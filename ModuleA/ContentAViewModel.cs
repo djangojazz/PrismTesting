@@ -10,6 +10,7 @@ namespace ModuleA
   public class ContentAViewModel : IContentAViewModel
   {                      
     public IView View { get; set; }
+    public string Message { get; set; }
 
     public ContentAViewModel(IContentAView view)
     {

@@ -63,9 +63,6 @@
       <DependentUpon>ContentA.xaml</DependentUpon>
     </Compile>
     <Compile Include="ContentAViewModel.cs" />
-    <Compile Include="ContentView.xaml.cs">
-      <DependentUpon>ContentView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="IContentAView.cs" />
     <Compile Include="IContentAViewModel.cs" />
     <Compile Include="ModuleAModule.cs" />
@@ -97,10 +94,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="ContentA.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ContentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
