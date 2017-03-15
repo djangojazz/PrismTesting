@@ -3,9 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://www.codeplex.com/prism"
         xmlns:inf="clr-namespace:Main.Infrastructure;assembly=Main.Infrastructure"
-        Title="Shell">
-  <DockPanel LastChildFill="True">
-    <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" prism:RegionManager.RegionName="{x:Static inf:RegionNames.ToolbarRegion}" />
-    <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.ContentRegion}" />
-  </DockPanel>
+        Title="Shell" Height="350" Width="350">
+  <Grid>
+    <DockPanel LastChildFill="True">
+      <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.StatusBarRegion}" DockPanel.Dock="Bottom" Width="Auto" Height="Auto" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>
+      <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.ContentRegion}" Width="Auto" Height="Auto" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>
+    </DockPanel>
+  </Grid>
 </Window>
