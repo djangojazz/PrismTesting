@@ -20,8 +20,21 @@ namespace People
     {
       RegisterViewsAndServices();
 
-      var vm = this._container.Resolve<IPersonViewModel>();
-      _regionManager.Regions[RegionNames.ContentRegion].Add(vm.View);
+      IRegion region = _regionManager.Regions[RegionNames.ContentRegion];
+
+      var vm = _container.Resolve<IPersonViewModel>();
+      vm.CreatePerson("Bob", "Smith");
+
+      region.Add(vm.View);
+      region.Activate(vm.View);
+
+      var vm2 = _container.Resolve<IPersonViewModel>();
+      vm2.CreatePerson("Karl", "Sums");
+      region.Add(vm2.View);
+
+      var vm3 = _container.Resolve<IPersonViewModel>();
+      vm3.CreatePerson("Jeff", "Lock");
+      region.Add(vm3.View);
     }
 
     protected void RegisterViewsAndServices()

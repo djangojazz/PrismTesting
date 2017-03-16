@@ -15,6 +15,7 @@ using Microsoft.Practices.Prism.MefExtensions;
 using System.ComponentModel.Composition.Hosting;
 using People;
 using StatusBar;
+using Toolbar;
 
 namespace Main
 {
@@ -37,27 +38,28 @@ namespace Main
       App.Current.MainWindow = (Window)Shell;
       App.Current.MainWindow.Show();
     }
-                                                   
-    protected override RegionAdapterMappings ConfigureRegionAdapterMappings()
-    {
-      RegionAdapterMappings mappings = base.ConfigureRegionAdapterMappings();
-      //Unity way
-      mappings.RegisterMapping(typeof(StackPanel), Container.Resolve<StackPanelRegionAdapter>());
-
-      ////Mef way
-      //mappings.RegisterMapping(typeof(StackPanel), Container.GetExportedValue<StackPanelRegionAdapter>());
-      return mappings;
-    }
-
+                  
     protected override IModuleCatalog CreateModuleCatalog()
     {
       ModuleCatalog catalog = new ModuleCatalog();
 
+      catalog.AddModule(typeof(ToolbarModule));
       catalog.AddModule(typeof(PeopleModule));
       catalog.AddModule(typeof(StatusBarModule));
-
+                                      
       return catalog;
     }
+
+    //protected override RegionAdapterMappings ConfigureRegionAdapterMappings()
+    //{
+    //  RegionAdapterMappings mappings = base.ConfigureRegionAdapterMappings();
+    //  //Unity way
+    //  mappings.RegisterMapping(typeof(StackPanel), Container.Resolve<StackPanelRegionAdapter>());
+
+    //  ////Mef way
+    //  //mappings.RegisterMapping(typeof(StackPanel), Container.GetExportedValue<StackPanelRegionAdapter>());
+    //  return mappings;
+    //}
 
     ////1. Code method of doing Prism
     //protected override void ConfigureModuleCatalog()

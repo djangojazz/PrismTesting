@@ -8,30 +8,31 @@ namespace People
 {
   public class PersonViewModel : ViewModelBase, IPersonViewModel
   {
-    public DelegateCommand<Person> SaveCommand { get; set; }
+    public string ViewName
+    {
+      get
+      {
+        return string.Format("{0}, {1}", Person.LastName, Person.FirstName);
+      }
+    }
+
+    public DelegateCommand SaveCommand { get; set; }
 
     public PersonViewModel(IPersonView view)
         : base(view)
     {
-      CreatePerson();
-      SaveCommand = new DelegateCommand<Person>(Save, CanSave);
+      SaveCommand = new DelegateCommand(Save, CanSave);
+      GlobalCommands.SaveAllCommand.RegisterCommand(SaveCommand);
     }
 
-    void OnAgeChanged(object sender, PropertyChangedEventArgs e)
+    private void Save()
     {
-      if (e.PropertyName == "Error")
-        SaveCommand.RaiseCanExecuteChanged();
+      Person.LastUpdated = DateTime.Now;
     }
-
-    private void Save(Person value)
+    private bool CanSave()
     {
-      Person.LastUpdated = DateTime.Now.AddYears(value.Age);
+      return Person != null && Person.Error == null;
     }
-
-    private bool CanSave(Person value)
-    {
-      return Person.Error == null;
-    }           
 
     private Person _person;
     public Person Person
@@ -41,7 +42,7 @@ namespace People
       {
         _person = value;
         _person.PropertyChanged += Person_PropertyChanged;
-        OnPropertyChanged(nameof(Person));
+        OnPropertyChanged("Person");
       }
     }
 
@@ -50,13 +51,13 @@ namespace People
       SaveCommand.RaiseCanExecuteChanged();
     }
 
-    private void CreatePerson()
+    public void CreatePerson(string firstName, string lastName)
     {
       Person = new Person()
       {
-        FirstName = "Bob",
-        LastName = "Smith",
-        Age = 46
+        FirstName = firstName,
+        LastName = lastName,
+        Age = 0
       };
     }
   }
