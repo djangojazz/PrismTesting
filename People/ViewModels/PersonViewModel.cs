@@ -3,11 +3,14 @@ using Business;
 using Main.Infrastructure;
 using Microsoft.Practices.Prism.Commands;
 using System.ComponentModel;
+using Microsoft.Practices.Prism.Events;
 
 namespace People
 {
   public class PersonViewModel : ViewModelBase, IPersonViewModel
   {
+    IEventAggregator _eventAggregator;
+
     public string ViewName
     {
       get
@@ -18,9 +21,10 @@ namespace People
 
     public DelegateCommand SaveCommand { get; set; }
 
-    public PersonViewModel(IPersonView view)
+    public PersonViewModel(IPersonView view, IEventAggregator eventAggregator)
         : base(view)
     {
+      _eventAggregator = eventAggregator;
       SaveCommand = new DelegateCommand(Save, CanSave);
       GlobalCommands.SaveAllCommand.RegisterCommand(SaveCommand);
     }
@@ -28,6 +32,7 @@ namespace People
     private void Save()
     {
       Person.LastUpdated = DateTime.Now;
+      _eventAggregator.GetEvent<PersonUpdatedEvent>().Publish($"{Person.LastName}, {Person.FirstName}");
     }
     private bool CanSave()
     {
