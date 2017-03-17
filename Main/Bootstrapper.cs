@@ -16,6 +16,7 @@ using System.ComponentModel.Composition.Hosting;
 using People;
 using StatusBar;
 using Toolbar;
+using Services;
 
 namespace Main
 {
@@ -43,6 +44,7 @@ namespace Main
     {
       ModuleCatalog catalog = new ModuleCatalog();
 
+      catalog.AddModule(typeof(ServicesModule));
       catalog.AddModule(typeof(ToolbarModule));
       catalog.AddModule(typeof(PeopleModule));
       catalog.AddModule(typeof(StatusBarModule));

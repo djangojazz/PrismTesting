@@ -4,6 +4,7 @@ using Main.Infrastructure;
 using Microsoft.Practices.Prism.Commands;
 using System.ComponentModel;
 using Microsoft.Practices.Prism.Events;
+using System.Windows;
 
 namespace People
 {
@@ -20,10 +21,12 @@ namespace People
     }
 
     public DelegateCommand SaveCommand { get; set; }
+    IPersonRepository _repository;
 
-    public PersonViewModel(IPersonView view, IEventAggregator eventAggregator)
+    public PersonViewModel(IPersonView view, IEventAggregator eventAggregator, IPersonRepository repository)
         : base(view)
     {
+      _repository = repository;
       _eventAggregator = eventAggregator;
       SaveCommand = new DelegateCommand(Save, CanSave);
       GlobalCommands.SaveAllCommand.RegisterCommand(SaveCommand);
@@ -31,7 +34,8 @@ namespace People
 
     private void Save()
     {
-      Person.LastUpdated = DateTime.Now;
+      int count = _repository.SavePerson(Person);
+      MessageBox.Show(count.ToString());
       _eventAggregator.GetEvent<PersonUpdatedEvent>().Publish($"{Person.LastName}, {Person.FirstName}");
     }
     private bool CanSave()

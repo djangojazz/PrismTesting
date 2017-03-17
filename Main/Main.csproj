@@ -133,6 +133,10 @@
       <Project>{FBF050A6-5EF0-4183-AD18-17755D0B0221}</Project>
       <Name>People</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{5E38BC0B-6057-4BAF-9F09-6CD31515BC47}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StatusBar\StatusBar.csproj">
       <Project>{EFAC30CD-7C0B-406F-A870-C1362BC91F31}</Project>
       <Name>StatusBar</Name>
