@@ -69,9 +69,21 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ViewModels\IPeopleViewModel.cs" />
+    <Compile Include="ViewModels\IPersonDetailsViewModel.cs" />
     <Compile Include="ViewModels\IPersonViewModel.cs" />
+    <Compile Include="ViewModels\PeopleViewModel.cs" />
+    <Compile Include="ViewModels\PersonDetailsViewModel.cs" />
     <Compile Include="ViewModels\PersonViewModel.cs" />
+    <Compile Include="Views\IPeopleView.cs" />
+    <Compile Include="Views\IPersonDetailsView.cs" />
     <Compile Include="Views\IPersonView.cs" />
+    <Compile Include="Views\PeopleView.xaml.cs">
+      <DependentUpon>PeopleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PersonDetailsView.xaml.cs">
+      <DependentUpon>PersonDetailsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PersonView.xaml.cs">
       <DependentUpon>PersonView.xaml</DependentUpon>
     </Compile>
@@ -85,6 +97,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\PeopleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PersonDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PersonView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

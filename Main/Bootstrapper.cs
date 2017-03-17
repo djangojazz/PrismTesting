@@ -44,8 +44,8 @@ namespace Main
     {
       ModuleCatalog catalog = new ModuleCatalog();
 
-      catalog.AddModule(typeof(ServicesModule));
-      catalog.AddModule(typeof(ToolbarModule));
+      //catalog.AddModule(typeof(ServicesModule));
+      //catalog.AddModule(typeof(ToolbarModule));
       catalog.AddModule(typeof(PeopleModule));
       catalog.AddModule(typeof(StatusBarModule));
                                       

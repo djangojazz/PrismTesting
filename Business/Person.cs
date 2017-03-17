@@ -110,5 +110,10 @@ namespace Business
     }
 
     #endregion //IDataErrorInfo
+
+    public override string ToString()
+    {
+      return String.Format("{0}, {1}", LastName, FirstName);
+    }
   }
 }
