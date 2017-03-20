@@ -26,7 +26,8 @@ namespace StatusBar
       RegisterViewsAndServices();
 
       var vm = _container.Resolve<IStatusBarViewModel>();
-      _regionManager.Regions[RegionNames.StatusBarRegion].Add(vm.View);
+      ////Works with Module5
+      //_regionManager.Regions[RegionNames.StatusBarRegion].Add(vm.View);
     }
 
     protected void RegisterViewsAndServices()

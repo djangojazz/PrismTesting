@@ -37,7 +37,8 @@ namespace People
       //region.Add(vm3.View);
 
       var vm = this._container.Resolve<IPeopleViewModel>();
-      _regionManager.Regions[RegionNames.ContentRegion].Add(vm.View);
+      ////Works with Module 5
+      //_regionManager.Regions[RegionNames.ContentRegion].Add(vm.View);
 
       _regionManager.RegisterViewWithRegion("PersonDetailsRegion", typeof(PersonDetailsView));
     }

@@ -17,6 +17,7 @@ using People;
 using StatusBar;
 using Toolbar;
 using Services;
+using Services.PersonService;
 
 namespace Main
 {
@@ -46,8 +47,11 @@ namespace Main
 
       //catalog.AddModule(typeof(ServicesModule));
       //catalog.AddModule(typeof(ToolbarModule));
-      catalog.AddModule(typeof(PeopleModule));
-      catalog.AddModule(typeof(StatusBarModule));
+      //catalog.AddModule(typeof(PeopleModule));
+      //catalog.AddModule(typeof(StatusBarModule));
+
+      catalog.AddModule(typeof(PersonServiceModule));
+      catalog.AddModule(typeof(ModuleAModule));
                                       
       return catalog;
     }

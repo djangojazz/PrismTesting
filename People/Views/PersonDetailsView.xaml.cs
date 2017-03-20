@@ -16,7 +16,8 @@ namespace People
       InitializeComponent();
 
       ViewModel = viewModel;
-      ViewModel.View = this;
+      //Works with Module 5
+      //ViewModel.View = this;
 
       RegionContext.GetObservableContext(this).PropertyChanged += (s, e) =>
       {

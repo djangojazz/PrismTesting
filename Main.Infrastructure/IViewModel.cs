@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace Main.Infrastructure
 {
   public interface IViewModel
-  {       
-    IView View { get; set; }
+  {   
+    //Used with Module5
+    //IView View { get; set; }
   }
 }

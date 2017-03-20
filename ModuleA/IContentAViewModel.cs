@@ -9,6 +9,7 @@ namespace ModuleA
 {
   public interface IContentAViewModel : IViewModel
   { 
-    string Message { get; set; }
+    //Used with Module 5
+    //string Message { get; set; }
   }
 }

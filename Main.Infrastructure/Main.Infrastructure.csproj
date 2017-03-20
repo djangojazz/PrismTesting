@@ -54,6 +54,8 @@
     <Compile Include="GlobalCommands.cs" />
     <Compile Include="IPersonRepository.cs" />
     <Compile Include="PersonUpdatedEvent.cs" />
+    <Compile Include="Services\IPersonService.cs" />
+    <Compile Include="Services\ServiceResult.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Page Include="UserControl1.xaml">
       <Generator>MSBuild:Compile</Generator>

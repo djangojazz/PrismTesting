@@ -62,6 +62,9 @@
     <Compile Include="ContentA.xaml.cs">
       <DependentUpon>ContentA.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ContentAView.xaml.cs">
+      <DependentUpon>ContentAView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ContentAViewModel.cs" />
     <Compile Include="IContentAView.cs" />
     <Compile Include="IContentAViewModel.cs" />
@@ -97,12 +100,20 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ContentAView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ToolbarA.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj">
+      <Project>{6A87A10F-8747-4738-903F-8688584CDDAC}</Project>
+      <Name>Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Main.Infrastructure\Main.Infrastructure.csproj">
       <Project>{80665825-ddbd-4863-a2da-63450d63b810}</Project>
       <Name>Main.Infrastructure</Name>

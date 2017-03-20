@@ -21,7 +21,8 @@ namespace Toolbar
       RegisterViewsAndServices();
 
       var vm = _container.Resolve<IToolbarViewModel>();
-      _regionManager.Regions[RegionNames.ToolbarRegion].Add(vm.View);
+      ////Works with Module5
+      //_regionManager.Regions[RegionNames.ToolbarRegion].Add(vm.View);
     }
 
     protected void RegisterViewsAndServices()
