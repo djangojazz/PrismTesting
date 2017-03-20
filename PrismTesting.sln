@@ -41,6 +41,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{06
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonService", "PersonService\PersonService.csproj", "{0F3641F6-B41B-4C0C-9D46-F4C5513BDED2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extended WPF Toolkit", "Extended WPF Toolkit", "{E0780E39-8F91-48E8-AA7D-DBA544AD49E7}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\Extended WPF Toolkit\WPFToolkit.Extended.dll = Libs\Extended WPF Toolkit\WPFToolkit.Extended.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -96,5 +101,6 @@ Global
 		{EF1F9422-3245-4CCE-BD20-E7D0E022C9A8} = {EC7BA0E7-8409-4F6D-8125-B1187C448F53}
 		{5E38BC0B-6057-4BAF-9F09-6CD31515BC47} = {EC7BA0E7-8409-4F6D-8125-B1187C448F53}
 		{0F3641F6-B41B-4C0C-9D46-F4C5513BDED2} = {06753F71-79F3-4341-A278-E93F8B0FEF24}
+		{E0780E39-8F91-48E8-AA7D-DBA544AD49E7} = {1606F9AD-F2CE-4F36-AAC8-ED747EC3156F}
 	EndGlobalSection
 EndGlobal

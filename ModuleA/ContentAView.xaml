@@ -1,7 +1,7 @@
 ﻿<UserControl x:Class="ModuleA.ContentAView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:extToolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended">
+             xmlns:extToolkit="http://schemas.xceed.com/wpf/xaml/toolkit">
   <UserControl.Resources>
     <DataTemplate x:Key="PersonItemTemplate">
       <StackPanel Margin="5" >
@@ -26,13 +26,14 @@
     </Grid.RowDefinitions>
 
     <StackPanel Margin="10" Orientation="Horizontal">
-
+      <ToggleButton IsChecked="{Binding IsBusy}" Content="IsBusy" Margin="4" />
     </StackPanel>
 
-
-    <ListBox ItemsSource="{Binding People}" Grid.Row="1"
+    <extToolkit:BusyIndicator Grid.Row="1" BusyContent="Loading People..." IsBusy="{Binding IsBusy}">
+    <ListBox ItemsSource="{Binding People}"
                  ItemTemplate="{StaticResource PersonItemTemplate}" >
 
     </ListBox>
+    </extToolkit:BusyIndicator>
   </Grid>
 </UserControl>
