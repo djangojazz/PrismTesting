@@ -9,8 +9,8 @@ namespace Services.PersonService
 {
   public class PersonService : IPersonService
     {
-        private static readonly string Avatar1Uri = @"/Services.PersonService;component/Images/MC900432625.PNG";
-        private static readonly string Avatar2Uri = @"/Services.PersonService;component/Images/MC900433938.PNG";
+        private static readonly string Avatar1Uri = @"/PersonService;component/Images/MC900432625.PNG";
+        private static readonly string Avatar2Uri = @"/PersonService;component/Images/MC900433938.PNG";
 
         public IList<Person> GetPeople()
         {
