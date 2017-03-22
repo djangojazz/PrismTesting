@@ -18,39 +18,58 @@ namespace ModuleA
   //[ModuleExport(typeof(ModuleAModule), InitializationMode=InitializationMode.WhenAvailable)]
 
   //[Module(ModuleName = "ModuleA", OnDemand = true)]
-  public class ModuleAModule : IModule
+  public class ModuleAModule : ModuleBase
+    //Module 7 and before: IModule
   {
-    IUnityContainer _container;
-    IRegionManager _regionManager;
+    public ModuleAModule(IUnityContainer container, IRegionManager regionManager)  : base(container, regionManager) { }
 
-    public ModuleAModule(IUnityContainer container, IRegionManager regionManager)
+    protected override void InitializeModule()
     {
-      _container = container;
-      _regionManager = regionManager;
+      RegionManager.RegisterViewWithRegion(RegionNames.ToolbarRegion, typeof(ViewAButton));
     }
 
-    public void Initialize()
+    protected override void RegisterTypes()
     {
-      
-      _container.RegisterType<IContentAView, ContentA>();
-      _container.RegisterType<IContentAViewModel, ContentAViewModel>();
-
-      _regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(ContentAView));
-
-      ////For use with Module 5
-      //_container.RegisterType<ToolbarA>();
-      //  _regionManager.RegisterViewWithRegion(RegionNames.ToolbarRegion, typeof(ToolbarA));
-
-      //  var vm = _container.Resolve<IContentAViewModel>();
-      //  vm.Message = "First View";
-      //  IRegion region = _regionManager.Regions[RegionNames.ContentRegion];
-      //  region.Add(vm.View);
-
-      //  var vm2 = _container.Resolve<IContentAViewModel>();
-      //  vm2.Message = "Second View";
-
-      //  region.Deactivate(vm.View);
-      //  region.Add(vm2.View);
+      //Doesn't work
+      //Container.RegisterType<ViewA>();
+      //Works but long
+      //Container.RegisterType<object, ViewA>(typeof(ViewA).FullName);
+      //Custom ExtensionMethod Makes it easier
+      Container.RegisterTypeForNavigation<ViewA>();
     }
+
+
+    ////Use with Module 7
+    //IUnityContainer _container;
+    //IRegionManager _regionManager;
+
+    //public ModuleAModule(IUnityContainer container, IRegionManager regionManager)
+    //{
+    //  _container = container;
+    //  _regionManager = regionManager;
+    //}
+
+    //public void Initialize()
+    //{        
+    //  _container.RegisterType<IContentAView, ContentA>();
+    //  _container.RegisterType<IContentAViewModel, ContentAViewModel>();
+
+    //  _regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(ContentAView));
+
+    //  ////For use with Module 5
+    //  //_container.RegisterType<ToolbarA>();
+    //  //  _regionManager.RegisterViewWithRegion(RegionNames.ToolbarRegion, typeof(ToolbarA));
+
+    //  //  var vm = _container.Resolve<IContentAViewModel>();
+    //  //  vm.Message = "First View";
+    //  //  IRegion region = _regionManager.Regions[RegionNames.ContentRegion];
+    //  //  region.Add(vm.View);
+
+    //  //  var vm2 = _container.Resolve<IContentAViewModel>();
+    //  //  vm2.Message = "Second View";
+
+    //  //  region.Deactivate(vm.View);
+    //  //  region.Add(vm2.View);
+    //}
   }
 }

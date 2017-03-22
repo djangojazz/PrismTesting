@@ -100,9 +100,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="IShellViewModel.cs" />
     <Compile Include="Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ShellViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -150,6 +152,10 @@
     <ProjectReference Include="..\ModuleA\ModuleA.csproj">
       <Project>{4c6369ac-9876-483f-aef1-7eb230046822}</Project>
       <Name>ModuleA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ModuleB\ModuleB.csproj">
+      <Project>{744C975D-F90A-46F4-88E0-6F0475217681}</Project>
+      <Name>ModuleB</Name>
     </ProjectReference>
     <ProjectReference Include="..\People\People.csproj">
       <Project>{FBF050A6-5EF0-4183-AD18-17755D0B0221}</Project>

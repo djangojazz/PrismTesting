@@ -18,6 +18,7 @@ using StatusBar;
 using Toolbar;
 using Services;
 using Services.PersonService;
+using ModuleB;
 
 namespace Main
 {
@@ -40,19 +41,35 @@ namespace Main
       App.Current.MainWindow = (Window)Shell;
       App.Current.MainWindow.Show();
     }
-                  
+
+    protected override void ConfigureContainer()
+    {
+      base.ConfigureContainer();
+      Container.RegisterType<IShellViewModel, ShellViewModel>();
+    }
+
+    protected override RegionAdapterMappings ConfigureRegionAdapterMappings()
+    {
+      RegionAdapterMappings mappings = base.ConfigureRegionAdapterMappings();
+      mappings.RegisterMapping(typeof(StackPanel), Container.Resolve<StackPanelRegionAdapter>());
+      return mappings;
+    }
+
     protected override IModuleCatalog CreateModuleCatalog()
     {
       ModuleCatalog catalog = new ModuleCatalog();
+
+      catalog.AddModule(typeof(ModuleAModule));
+      catalog.AddModule(typeof(ModuleBModule));
 
       //catalog.AddModule(typeof(ServicesModule));
       //catalog.AddModule(typeof(ToolbarModule));
       //catalog.AddModule(typeof(PeopleModule));
       //catalog.AddModule(typeof(StatusBarModule));
 
-      catalog.AddModule(typeof(PersonServiceModule));
-      catalog.AddModule(typeof(ModuleAModule));
-                                      
+      //catalog.AddModule(typeof(PersonServiceModule));
+      //catalog.AddModule(typeof(ModuleAModule));
+
       return catalog;
     }
 

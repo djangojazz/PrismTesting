@@ -46,6 +46,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extended WPF Toolkit", "Ext
 		Libs\Extended WPF Toolkit\WPFToolkit.Extended.dll = Libs\Extended WPF Toolkit\WPFToolkit.Extended.dll
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleB", "ModuleB\ModuleB.csproj", "{744C975D-F90A-46F4-88E0-6F0475217681}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,6 +90,10 @@ Global
 		{0F3641F6-B41B-4C0C-9D46-F4C5513BDED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F3641F6-B41B-4C0C-9D46-F4C5513BDED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F3641F6-B41B-4C0C-9D46-F4C5513BDED2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{744C975D-F90A-46F4-88E0-6F0475217681}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{744C975D-F90A-46F4-88E0-6F0475217681}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{744C975D-F90A-46F4-88E0-6F0475217681}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{744C975D-F90A-46F4-88E0-6F0475217681}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,5 +108,6 @@ Global
 		{5E38BC0B-6057-4BAF-9F09-6CD31515BC47} = {EC7BA0E7-8409-4F6D-8125-B1187C448F53}
 		{0F3641F6-B41B-4C0C-9D46-F4C5513BDED2} = {06753F71-79F3-4341-A278-E93F8B0FEF24}
 		{E0780E39-8F91-48E8-AA7D-DBA544AD49E7} = {1606F9AD-F2CE-4F36-AAC8-ED747EC3156F}
+		{744C975D-F90A-46F4-88E0-6F0475217681} = {EC7BA0E7-8409-4F6D-8125-B1187C448F53}
 	EndGlobalSection
 EndGlobal
