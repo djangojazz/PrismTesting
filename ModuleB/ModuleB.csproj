@@ -57,9 +57,11 @@
     <Compile Include="Navigation\ViewBButton.xaml.cs">
       <DependentUpon>ViewBButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\IViewBViewModel.cs" />
     <Compile Include="Views\ViewB.xaml.cs">
       <DependentUpon>ViewB.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ViewBViewModel.cs" />
     <Page Include="Navigation\ViewBButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

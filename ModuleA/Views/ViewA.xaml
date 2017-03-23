@@ -6,6 +6,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
   <Grid>
-    <TextBlock Text="ViewA" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" />
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+      <TextBlock Text="ViewA" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+      <TextBlock Text="{Binding PageViews}" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </StackPanel>
   </Grid>
 </UserControl>

@@ -9,15 +9,16 @@ namespace Main.Infrastructure
 {
   public class ViewModelBase : IViewModel, INotifyPropertyChanged
   {
-    public IView View { get; set; }
+    ////Used with Module 7
+    //public IView View { get; set; }
 
-    public ViewModelBase() { }
+    //public ViewModelBase() { }
 
-    public ViewModelBase(IView view)
-    {
-      View = view;
-      View.ViewModel = this;
-    }
+    //public ViewModelBase(IView view)
+    //{
+    //  View = view;
+    //  View.ViewModel = this;
+    //}
 
     public event PropertyChangedEventHandler PropertyChanged;
     protected void OnPropertyChanged(string propertyName)

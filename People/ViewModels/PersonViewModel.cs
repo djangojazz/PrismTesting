@@ -24,7 +24,7 @@ namespace People
     IPersonRepository _repository;
 
     public PersonViewModel(IPersonView view, IEventAggregator eventAggregator, IPersonRepository repository)
-        : base(view)
+        //: base(view)  //Moduel 7
     {
       _repository = repository;
       _eventAggregator = eventAggregator;

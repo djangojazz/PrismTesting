@@ -8,7 +8,7 @@ namespace People
   public class PeopleViewModel : ViewModelBase, IPeopleViewModel
   {
     public PeopleViewModel(IPeopleView view)
-        : base(view)
+        //: base(view)         //For use with Module 7
     {
       CreatePeople();
     }

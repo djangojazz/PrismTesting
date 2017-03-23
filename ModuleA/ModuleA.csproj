@@ -109,9 +109,11 @@
     <Compile Include="Navigation\ViewAButton.xaml.cs">
       <DependentUpon>ViewAButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\IViewAViewModel.cs" />
     <Compile Include="Views\ViewA.xaml.cs">
       <DependentUpon>ViewA.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\VIewAViewModel.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

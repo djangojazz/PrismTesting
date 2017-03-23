@@ -7,7 +7,7 @@ using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Prism.Regions;
 using Main.Infrastructure;
-using Microsoft.Practices.Prism.MefExtensions.Modularity;
+using Microsoft.Practices.Prism.MefExtensions.Modularity;      
 
 namespace ModuleA
 {
@@ -35,6 +35,7 @@ namespace ModuleA
       //Works but long
       //Container.RegisterType<object, ViewA>(typeof(ViewA).FullName);
       //Custom ExtensionMethod Makes it easier
+      Container.RegisterType<IViewAViewModel, ViewAViewModel>();
       Container.RegisterTypeForNavigation<ViewA>();
     }
 

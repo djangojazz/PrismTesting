@@ -13,7 +13,7 @@ namespace StatusBar
     IEventAggregator _eventAggregator;
 
     public StatusBarViewModel(IStatusBarView view, IEventAggregator eventAggregator)
-        : base(view)
+        //: base(view) Module 7
     {
       _eventAggregator = eventAggregator;
       _eventAggregator.GetEvent<PersonUpdatedEvent>().Subscribe(PersonUpdated);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Main.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,16 @@ namespace ModuleB
   /// </summary>
   public partial class ViewB : UserControl
   {
-    public ViewB()
+    public ViewB(IViewBViewModel viewModel)
     {
       InitializeComponent();
+      ViewModel = viewModel;
+    }
+
+    public IViewModel ViewModel
+    {
+      get { return (IViewModel)DataContext; }
+      set { DataContext = value; }
     }
   }
 }

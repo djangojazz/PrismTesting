@@ -27,7 +27,7 @@ namespace Main
 
     private void NavigateComplete(NavigationResult obj)
     {
-      MessageBox.Show($"Navigation to {obj.Context.Uri} complete");
+      //MessageBox.Show($"Navigation to {obj.Context.Uri} complete");
     }
   }
 }

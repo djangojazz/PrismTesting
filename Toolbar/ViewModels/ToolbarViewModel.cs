@@ -10,7 +10,7 @@ namespace Toolbar
   public class ToolbarViewModel : ViewModelBase, IToolbarViewModel
   {
     public ToolbarViewModel(IToolbarView view)
-        : base(view)
+        //: base(view)  // Module 7
     {
 
     }

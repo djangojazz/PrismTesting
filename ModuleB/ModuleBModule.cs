@@ -15,12 +15,13 @@ namespace ModuleB
     }
 
     protected override void RegisterTypes()
-    {          
+    {
       //Doesn't work                      
       //Container.RegisterType<ViewB>();
       //Works but long                    
       //Container.RegisterType<object, ViewB>(typeof(ViewB).FullName);
       //Custom ExtensionMethod Makes it easier
+      Container.RegisterType<IViewBViewModel, ViewBViewModel>();
       Container.RegisterTypeForNavigation<ViewB>();
     }
   }
