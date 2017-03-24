@@ -20,6 +20,17 @@ namespace Main.Infrastructure
     //  View.ViewModel = this;
     //}
 
+    private bool _isBusy;
+    public bool IsBusy
+    {
+      get { return _isBusy; }
+      set
+      {
+        _isBusy = value;
+        OnPropertyChanged("IsBusy");
+      }
+    }
+
     public event PropertyChangedEventHandler PropertyChanged;
     protected void OnPropertyChanged(string propertyName)
     {

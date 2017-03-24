@@ -7,6 +7,17 @@ namespace Business
   {
     #region Properties
 
+    private int _id;
+    public int Id
+    {
+      get { return _id; }
+      set
+      {
+        _id = value;
+        OnPropertyChanged("Id");
+      }
+    }
+
     private string _firstName;
     public string FirstName
     {

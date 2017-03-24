@@ -58,7 +58,7 @@ namespace Main
     protected override IModuleCatalog CreateModuleCatalog()
     {
       ModuleCatalog catalog = new ModuleCatalog();
-
+      catalog.AddModule(typeof(PersonServiceModule));
       catalog.AddModule(typeof(ModuleAModule));
       catalog.AddModule(typeof(ModuleBModule));
 

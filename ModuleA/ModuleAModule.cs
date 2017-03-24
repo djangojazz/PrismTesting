@@ -7,7 +7,8 @@ using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Prism.Regions;
 using Main.Infrastructure;
-using Microsoft.Practices.Prism.MefExtensions.Modularity;      
+using Microsoft.Practices.Prism.MefExtensions.Modularity;
+using ModuleA.Views;
 
 namespace ModuleA
 {
@@ -37,6 +38,8 @@ namespace ModuleA
       //Custom ExtensionMethod Makes it easier
       Container.RegisterType<IViewAViewModel, ViewAViewModel>();
       Container.RegisterTypeForNavigation<ViewA>();
+      Container.RegisterType<IEmailViewModel, EmailViewModel>();
+      Container.RegisterTypeForNavigation<EmailView>();
     }
 
 

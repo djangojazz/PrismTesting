@@ -25,7 +25,7 @@ namespace Services.PersonService
                 person.Email = String.Format("{0}.{1}@domain.com", person.FirstName, person.LastName);
                 person.ImagePath = GetPersonImagePath(i);
                 people.Add(person);
-                Thread.Sleep(80); //simulate longer process
+                Thread.Sleep(10); //simulate longer process
             }
 
             return people;

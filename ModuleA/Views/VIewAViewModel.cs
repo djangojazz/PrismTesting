@@ -1,44 +1,77 @@
-﻿using Main.Infrastructure;
+﻿using Business;
+using Main.Infrastructure;
+using Main.Infrastructure.Services;
+using Microsoft.Practices.Prism;
+using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Regions;
+using ModuleA.Views;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace ModuleA
 {
-  public class ViewAViewModel : ViewModelBase, IViewAViewModel, INavigationAware
+  public class ViewAViewModel : ViewModelBase, IViewAViewModel
   {
-    private int _pageViews;
-    public int PageViews
+    private readonly IRegionManager _regionManager;
+    private readonly IPersonService _personService;
+
+    #region Constructors
+
+    public ViewAViewModel(IRegionManager regionManager, IPersonService personService)
     {
-      get { return _pageViews; }
+      _regionManager = regionManager;
+      _personService = personService;
+      EmailCommand = new DelegateCommand<Person>(Email);
+      LoadPeople();
+    }
+
+    #endregion //Constructors
+
+    #region Properties
+
+    private ObservableCollection<Person> _People;
+    public ObservableCollection<Person> People
+    {
+      get { return _People; }
       set
       {
-        _pageViews = value;
-        OnPropertyChanged("PageViews");
+        _People = value;
+        OnPropertyChanged("People");
       }
     }
 
-    public ViewAViewModel()
-    {
+    public DelegateCommand<Person> EmailCommand { get; private set; }
 
-    }
-           
-    public bool IsNavigationTarget(NavigationContext navigationContext)
+    #endregion //Properties
+
+    #region Commands
+
+    private void Email(Person person)
     {
-      return true;
+      if (person != null)
+      {
+        var uriQuery = new UriQuery();
+        uriQuery.Add("To", person.Email);
+
+        var uri = new Uri(typeof(EmailView).FullName + uriQuery, UriKind.Relative);
+        _regionManager.RequestNavigate(RegionNames.ContentRegion, uri);
+      }
     }
 
-    public void OnNavigatedFrom(NavigationContext navigationContext)
+    #endregion //Commands
+
+    #region Methods
+
+    private void LoadPeople()
     {
-      
+      IsBusy = true;
+      _personService.GetPeopleAsync((sender, result) =>
+      {
+        People = new ObservableCollection<Person>(result.Object);
+        IsBusy = false;
+      });
     }
 
-    public void OnNavigatedTo(NavigationContext navigationContext)
-    {
-      PageViews++;
-    }
+    #endregion //Methods
   }
 }
