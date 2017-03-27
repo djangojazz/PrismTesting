@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace ModuleA
 {
-  public class ViewAViewModel : ViewModelBase, IViewAViewModel, IConfirmNavigationRequest
+  public class ViewAViewModel : ViewModelBase, IViewAViewModel//, IConfirmNavigationRequest
   {
     private readonly IRegionManager _regionManager;
     private readonly IPersonService _personService;
@@ -83,29 +83,29 @@ namespace ModuleA
       });
     }
 
-    public void ConfirmNavigationRequest(NavigationContext navigationContext, Action<bool> continuationCallback)
-    {
-      bool result = true;
+    //public void ConfirmNavigationRequest(NavigationContext navigationContext, Action<bool> continuationCallback)
+    //{
+    //  bool result = true;
 
-      if (MessageBox.Show("Do you want to navigate?", "Navigate?", MessageBoxButton.YesNo) == MessageBoxResult.No)
-        result = false;
+    //  if (MessageBox.Show("Do you want to navigate?", "Navigate?", MessageBoxButton.YesNo) == MessageBoxResult.No)
+    //    result = false;
 
-      continuationCallback(result);
-    }
+    //  continuationCallback(result);
+    //}
       
-    public bool IsNavigationTarget(NavigationContext navigationContext)
-    {
-     return true;
-    }
+    //public bool IsNavigationTarget(NavigationContext navigationContext)
+    //{
+    // return true;
+    //}
 
-    public void OnNavigatedFrom(NavigationContext navigationContext)
-    {                                          
-    }
+    //public void OnNavigatedFrom(NavigationContext navigationContext)
+    //{                                          
+    //}
 
-    public void OnNavigatedTo(NavigationContext navigationContext)
-    {
-      PageViews++;
-    }
+    //public void OnNavigatedTo(NavigationContext navigationContext)
+    //{
+    //  PageViews++;
+    //}
 
     #endregion //Methods
   }
