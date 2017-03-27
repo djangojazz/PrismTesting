@@ -3,14 +3,15 @@ using Main.Infrastructure;
 using Main.Infrastructure.Services;
 using Microsoft.Practices.Prism;
 using Microsoft.Practices.Prism.Commands;
-using Microsoft.Practices.Prism.Regions;
+using Microsoft.Practices.Prism.Regions; 
 using ModuleA.Views;
 using System;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace ModuleA
 {
-  public class ViewAViewModel : ViewModelBase, IViewAViewModel
+  public class ViewAViewModel : ViewModelBase, IViewAViewModel, IConfirmNavigationRequest
   {
     private readonly IRegionManager _regionManager;
     private readonly IPersonService _personService;
@@ -28,6 +29,16 @@ namespace ModuleA
     #endregion //Constructors
 
     #region Properties
+    private int _pageViews;
+    public int PageViews
+    {
+      get { return _pageViews; }
+      set
+      {
+        _pageViews = value;
+        OnPropertyChanged("PageViews");
+      }
+    }
 
     private ObservableCollection<Person> _People;
     public ObservableCollection<Person> People
@@ -70,6 +81,30 @@ namespace ModuleA
         People = new ObservableCollection<Person>(result.Object);
         IsBusy = false;
       });
+    }
+
+    public void ConfirmNavigationRequest(NavigationContext navigationContext, Action<bool> continuationCallback)
+    {
+      bool result = true;
+
+      if (MessageBox.Show("Do you want to navigate?", "Navigate?", MessageBoxButton.YesNo) == MessageBoxResult.No)
+        result = false;
+
+      continuationCallback(result);
+    }
+      
+    public bool IsNavigationTarget(NavigationContext navigationContext)
+    {
+     return true;
+    }
+
+    public void OnNavigatedFrom(NavigationContext navigationContext)
+    {                                          
+    }
+
+    public void OnNavigatedTo(NavigationContext navigationContext)
+    {
+      PageViews++;
     }
 
     #endregion //Methods
