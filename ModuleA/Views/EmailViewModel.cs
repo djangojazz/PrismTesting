@@ -52,7 +52,11 @@ namespace ModuleA.Views
               
     public bool IsNavigationTarget(NavigationContext navigationContext)
     {
-      return true;
+      var toAddress = navigationContext.Parameters["To"];
+      if (To == toAddress)
+        return true;
+      else
+        return false;
     }
 
     public void OnNavigatedFrom(NavigationContext navigationContext)
